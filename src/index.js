@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import Home from './Home';
 import About from './About';
-import Login from './Login';
-import Signup from './Signup';
+
+import App from './App';
+import SignIn from './SignIn';
 
 /* Add basic styling for NavLinks */
 const link = {
@@ -22,21 +23,21 @@ const link = {
 
 const NavBar = () => (
   <div>
-    <NavLink to="/" exact style={link} activeStyle={{ background: 'darkblue' }}>
+    <Button component={Link} to="/" color="primary" variant="contained">
       Home
-    </NavLink>
-    <NavLink to="/about" exact style={link} activeStyle={{ background: 'darkblue' }}>
+    </Button>
+    <Button component={Link} to="/about" color="primary" variant="contained">
       About
-    </NavLink>
-    <NavLink to="/login" exact style={link} activeStyle={{ background: 'darkblue' }}>
+    </Button>
+    <Button component={Link} to="/login" color="primary" variant="contained">
       Login
-    </NavLink>
-    <NavLink to="/signup" exact style={link} activeStyle={{ background: 'darkblue' }}>
-      Sign Up
-    </NavLink>
-    <NavLink to="/app" exact style={link} activeStyle={{ background: 'darkblue' }}>
+    </Button>
+    <Button component={Link} to="/signup" color="primary" variant="contained">
+      Signup
+    </Button>
+    <Button component={Link} to="/app" color="primary" variant="contained">
       App
-    </NavLink>
+    </Button>
   </div>
 );
 
@@ -46,8 +47,8 @@ ReactDOM.render(
       <NavBar />
       <Route exact path="/" component={Home} />
       <Route exact path="/about" component={About} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={Signup} />
+      <Route exact path="/login" component={SignIn} />
+      <Route exact path="/signup" component={SignIn} />
       <Route exact path="/app" component={App} />
     </React.Fragment>
   </Router>,
