@@ -10,6 +10,7 @@ import About from './About';
 
 import App from './App';
 import SignIn from './SignIn';
+import SignUp from './SignUp';
 import TimerContainer from './containers/TimerContainer';
 import ProjectContainer from './containers/ProjectContainer';
 import NavBar from './navigation/NavBar';
@@ -21,7 +22,7 @@ ReactDOM.render(
       <Route exact path="/" component={Home} />
       <Route exact path="/about" component={About} />
       <Route exact path="/login" component={SignIn} />
-      <Route exact path="/signup" component={SignIn} />
+      <Route exact path="/signup" component={SignUp} />
       <Route exact path="/app" component={App} />
       <Route exact path="/timer" component={TimerContainer} />
       <Route exact path="/project" component={ProjectContainer} />
