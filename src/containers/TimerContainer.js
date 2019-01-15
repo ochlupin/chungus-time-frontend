@@ -4,11 +4,6 @@ const timersAPI = 'http://localhost:5000/api/v1/timers';
 const projectsAPI = 'http://localhost:5000/api/v1/projects';
 
 class TimerContainer extends React.Component {
-  state = {
-    timers: []
-  };
-
-  componentDidMount() {}
   render() {
     return <div>Timers</div>;
   }
