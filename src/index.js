@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import Home from './Home';
 import About from './About';
 import Login from './Login';
+import Signup from './Signup';
 
 /* Add basic styling for NavLinks */
 const link = {
@@ -30,6 +31,12 @@ const NavBar = () => (
     <NavLink to="/login" exact style={link} activeStyle={{ background: 'darkblue' }}>
       Login
     </NavLink>
+    <NavLink to="/signup" exact style={link} activeStyle={{ background: 'darkblue' }}>
+      Sign Up
+    </NavLink>
+    <NavLink to="/app" exact style={link} activeStyle={{ background: 'darkblue' }}>
+      App
+    </NavLink>
   </div>
 );
 
@@ -40,6 +47,8 @@ ReactDOM.render(
       <Route exact path="/" component={Home} />
       <Route exact path="/about" component={About} />
       <Route exact path="/login" component={Login} />
+      <Route exact path="/signup" component={Signup} />
+      <Route exact path="/app" component={App} />
     </React.Fragment>
   </Router>,
   document.getElementById('root')
