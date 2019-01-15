@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 

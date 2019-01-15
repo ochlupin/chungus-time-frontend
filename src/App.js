@@ -45,10 +45,12 @@ class App extends Component {
   }
 
   render() {
+    const timers = this.state.timers;
+    const projects = this.state.projects;
     return (
       <div className="App">
-        <TimerContainer />
-        <ProjectContainer />
+        <TimerContainer timers={timers} />
+        <ProjectContainer projects={projects} />
       </div>
     );
   }

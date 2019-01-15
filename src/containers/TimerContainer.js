@@ -7,10 +7,11 @@ const projectsAPI = 'http://localhost:5000/api/v1/projects';
 
 class TimerContainer extends React.Component {
   render() {
+    const timers = this.props.timers;
     return (
       <div>
         <TimerForm />
-        <TimerList />
+        <TimerList timers={timers} />
       </div>
     );
   }
