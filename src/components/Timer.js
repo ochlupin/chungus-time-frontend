@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const Timer = props => {
   const { title, seconds } = props.timer;
   return (
     <div>
       <li>
-        {title}-{seconds}
+        {title}||{seconds} seconds
       </li>
     </div>
   );

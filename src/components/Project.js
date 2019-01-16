@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
 
 const Project = props => {
+  const { title } = props.project;
   return (
     <div>
-      <li>Project</li>
+      <li>{title}</li>
     </div>
   );
 };
