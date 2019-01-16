@@ -6,7 +6,7 @@ const TimerDetail = props => {
   return (
     <div>
       <li>
-        {title}||{seconds}
+        {title}||{seconds} secs||{props.timer.project.title}
       </li>
     </div>
   );

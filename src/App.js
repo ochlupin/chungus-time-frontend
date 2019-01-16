@@ -116,17 +116,12 @@ class App extends Component {
     fetch(timersAPI, {
       method: 'POST',
       headers: headers,
-      // body: JSON.stringify({
-      //   title: title,
-      //   seconds: seconds
-      // })
       body: body
     })
       .then(r => r.json())
-      .then(console.log);
-    //   .then(timer => this.addTimer(timer))
-    //   .catch(error => console.error(error));
-    // this.setState({ timerFormValues: initialTimerFormValues });
+      .then(timer => this.addTimer(timer))
+      .catch(error => console.error(error));
+    this.setState({ timerFormValues: initialTimerFormValues });
   };
 
   addProject = project => {
