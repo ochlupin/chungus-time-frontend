@@ -1,9 +1,10 @@
-import React from 'react';
-import TimerForm from '../components/TimerForm';
-import TimerList from '../components/TimerList';
+import React from "react";
+import TimerForm from "../components/TimerForm";
+import TimerList from "../components/TimerList";
+import ActiveTimer from "../components/Timer/ActiveTimer";
 
-const timersAPI = 'http://localhost:5000/api/v1/timers';
-const projectsAPI = 'http://localhost:5000/api/v1/projects';
+const timersAPI = "http://localhost:5000/api/v1/timers";
+const projectsAPI = "http://localhost:5000/api/v1/projects";
 
 class TimerContainer extends React.Component {
   render() {
@@ -11,6 +12,7 @@ class TimerContainer extends React.Component {
     return (
       <div>
         <TimerForm />
+        <ActiveTimer />
         <TimerList timers={timers} />
       </div>
     );

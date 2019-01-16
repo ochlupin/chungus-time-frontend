@@ -1,6 +1,6 @@
 import React from "react";
 
-const Timer = props => {
+const TimerDetail = props => {
   const { title, seconds } = props.timer;
   return (
     <div>
@@ -11,4 +11,4 @@ const Timer = props => {
   );
 };
 
-export default Timer;
+export default TimerDetail;

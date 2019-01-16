@@ -1,5 +1,5 @@
 import React from "react";
-import Timer from "./Timer";
+import TimerDetail from "./TimerDetail";
 
 const TimerList = props => {
   const timers = props.timers;
@@ -7,7 +7,7 @@ const TimerList = props => {
     <div>
       <h3>Active Timers</h3>
       {timers.map(timer => (
-        <Timer key={timer.id} timer={timer} />
+        <TimerDetail key={timer.id} timer={timer} />
       ))}
     </div>
   );
