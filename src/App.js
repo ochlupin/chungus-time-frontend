@@ -1,23 +1,24 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-import { withStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import TimerContainer from "./containers/TimerContainer";
-import ProjectContainer from "./containers/ProjectContainer";
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import TimerContainer from './containers/TimerContainer';
+import ProjectContainer from './containers/ProjectContainer';
 
-const timersAPI = "http://localhost:5000/api/v1/timers";
-const projectsAPI = "http://localhost:5000/api/v1/projects";
+const timersAPI = 'http://localhost:5000/api/v1/timers';
+const projectsAPI = 'http://localhost:5000/api/v1/projects';
 const initialTimerFormValues = {
-  title: "Timer",
-  seconds: "0"
+  title: 'Timer',
+  seconds: '0',
+  project_id: 0
 };
 const initialProjectFormValues = {
-  title: "Title"
+  title: 'Title'
 };
 
 class App extends Component {
@@ -39,7 +40,7 @@ class App extends Component {
       .then(r => r.json())
       .then(timerData => {
         this.setState({ timers: timerData }, () => {
-          console.log("The state in App: ", timerData);
+          console.log('The state in App: ', timerData);
         });
       });
   };
@@ -49,7 +50,7 @@ class App extends Component {
       .then(r => r.json())
       .then(projectData => {
         this.setState({ projects: projectData }, () => {
-          console.log("The state in App: ", projectData);
+          console.log('The state in App: ', projectData);
         });
       });
   };
@@ -58,7 +59,7 @@ class App extends Component {
 
   handleChangeProjectForm = event => {
     const userInput = event.target.value;
-    console.log("User Input is :", userInput);
+    // console.log('User Input is :', userInput);
     const newProjectFormValues = {
       ...this.state.projectFormValues,
       [event.target.name]: userInput
@@ -67,7 +68,7 @@ class App extends Component {
   };
   handleChangeTimerForm = event => {
     const userInput = event.target.value;
-    console.log("User Input is :", userInput);
+    // console.log('User Input is :', userInput);
     const newTimerFormValues = {
       ...this.state.timerFormValues,
       [event.target.name]: userInput
@@ -79,11 +80,11 @@ class App extends Component {
     event.preventDefault();
     const { title } = this.state.projectFormValues;
     const headers = {
-      "Content-Type": "application/json",
-      Accept: "application/json"
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
     };
     fetch(projectsAPI, {
-      method: "POST",
+      method: 'POST',
       headers: headers,
       body: JSON.stringify({
         title: title
@@ -96,24 +97,36 @@ class App extends Component {
   };
 
   handleSubmitTimer = event => {
+    // console.log(event, 'state', this.state.timerFormValues);
+
     event.preventDefault();
-    const { title, seconds } = this.state.timerFormValues;
+    const { title, seconds, project_id } = this.state.timerFormValues;
+    // console.log('destructure', title, seconds, project_id);
+    const body = JSON.stringify({
+      // timer: { title: title, seconds: seconds, project_id: project_id, user_id: 1 }
+      title: title,
+      seconds: seconds,
+      project_id: project_id,
+      user_id: 1
+    });
     const headers = {
-      "Content-Type": "application/json",
-      Accept: "application/json"
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
     };
     fetch(timersAPI, {
-      method: "POST",
+      method: 'POST',
       headers: headers,
-      body: JSON.stringify({
-        title: title,
-        seconds: seconds
-      })
+      // body: JSON.stringify({
+      //   title: title,
+      //   seconds: seconds
+      // })
+      body: body
     })
       .then(r => r.json())
-      .then(timer => this.addTimer(timer))
-      .catch(error => console.error(error));
-    this.setState({ timerFormValues: initialTimerFormValues });
+      .then(console.log);
+    //   .then(timer => this.addTimer(timer))
+    //   .catch(error => console.error(error));
+    // this.setState({ timerFormValues: initialTimerFormValues });
   };
 
   addProject = project => {

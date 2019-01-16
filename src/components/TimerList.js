@@ -1,5 +1,5 @@
-import React from "react";
-import TimerDetail from "./TimerDetail";
+import React from 'react';
+import TimerDetail from './TimerDetail';
 
 const TimerList = props => {
   const timers = props.timers;
