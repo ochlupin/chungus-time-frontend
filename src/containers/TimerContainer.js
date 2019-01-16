@@ -9,9 +9,16 @@ const projectsAPI = "http://localhost:5000/api/v1/projects";
 class TimerContainer extends React.Component {
   render() {
     const timers = this.props.timers;
+    const handleSubmitTimer = this.props.handleSubmitTimer;
+    const handleChangeTimerForm = this.props.handleChangeTimerForm;
+    const timerFormValues = this.props.timerFormValues;
     return (
       <div>
-        <TimerForm />
+        <TimerForm
+          handleSubmitTimer={handleSubmitTimer}
+          handleChangeTimerForm={handleChangeTimerForm}
+          timerFormValues={timerFormValues}
+        />
         <ActiveTimer />
         <TimerList timers={timers} />
       </div>

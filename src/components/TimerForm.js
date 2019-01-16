@@ -10,14 +10,34 @@ import NavigationIcon from "@material-ui/icons/Navigation";
 import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 
-const TimerForm = () => {
+const TimerForm = props => {
+  console.log("In TimerForm, props are: ", props);
+  const timerFormValues = props.timerFormValues;
+  const handleSubmitTimer = props.handleSubmitTimer;
+  const handleChangeTimerForm = props.handleChangeTimerForm;
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmitTimer}>
         <Button color="primary" variant="contained" size="large">
           Create a Timer
         </Button>
-        <TextField id="standard-name" label="Name" margin="normal" />
+        <TextField
+          id="standard-name"
+          label="title"
+          name="title"
+          margin="normal"
+          value={timerFormValues.title}
+          onChange={handleChangeTimerForm}
+        />
+        <TextField
+          id="standard-name"
+          label="Duration"
+          name="seconds"
+          margin="normal"
+          value={timerFormValues.seconds}
+          onChange={handleChangeTimerForm}
+        />
       </form>
     </div>
   );

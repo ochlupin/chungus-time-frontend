@@ -13,8 +13,8 @@ import ProjectContainer from "./containers/ProjectContainer";
 const timersAPI = "http://localhost:5000/api/v1/timers";
 const projectsAPI = "http://localhost:5000/api/v1/projects";
 const initialTimerFormValues = {
-  title: "",
-  seconds: 0
+  title: "Timer",
+  seconds: "0"
 };
 const initialProjectFormValues = {
   title: "Title"
@@ -65,6 +65,15 @@ class App extends Component {
     };
     this.setState({ projectFormValues: newProjectFormValues });
   };
+  handleChangeTimerForm = event => {
+    const userInput = event.target.value;
+    console.log("User Input is :", userInput);
+    const newTimerFormValues = {
+      ...this.state.timerFormValues,
+      [event.target.name]: userInput
+    };
+    this.setState({ timerFormValues: newTimerFormValues });
+  };
 
   handleSubmitProject = event => {
     event.preventDefault();
@@ -86,9 +95,35 @@ class App extends Component {
     this.setState({ projectFormValues: initialProjectFormValues });
   };
 
+  handleSubmitTimer = event => {
+    event.preventDefault();
+    const { title, seconds } = this.state.timerFormValues;
+    const headers = {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    };
+    fetch(timersAPI, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({
+        title: title,
+        seconds: seconds
+      })
+    })
+      .then(r => r.json())
+      .then(project => this.addTimer(project))
+      .catch(error => console.error(error));
+    this.setState({ timerFormValues: initialTimerFormValues });
+  };
+
   addProject = project => {
     this.setState({
       projects: [...this.state.projects, project]
+    });
+  };
+  addTimer = timer => {
+    this.setState({
+      timers: [...this.state.timers, timer]
     });
   };
   render() {
@@ -96,11 +131,20 @@ class App extends Component {
     const projects = this.state.projects;
     const handleSubmitProject = this.handleSubmitProject;
     const handleChangeProjectForm = this.handleChangeProjectForm;
+    const handleSubmitTimer = this.handleSubmitTimer;
+    const handleChangeTimerForm = this.handleChangeTimerForm;
     const addProject = this.addProject;
+    const addTimer = this.addTimer;
     const projectFormValues = this.state.projectFormValues;
+    const timerFormValues = this.state.timerFormValues;
     return (
       <div className="App">
-        <TimerContainer timers={timers} />
+        <TimerContainer
+          timers={timers}
+          timerFormValues={timerFormValues}
+          handleSubmitTimer={handleSubmitTimer}
+          handleChangeTimerForm={handleChangeTimerForm}
+        />
         <br />
         <br />
         <br />

@@ -11,7 +11,7 @@ import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 
 const ProjectForm = props => {
-  console.log("In ProjectForm, props are: ", props);
+  // console.log("In ProjectForm, props are: ", props);
   const projectFormValues = props.projectFormValues;
   const handleSubmitProject = props.handleSubmitProject;
   const handleChangeProjectForm = props.handleChangeProjectForm;
