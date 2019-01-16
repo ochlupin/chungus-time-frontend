@@ -8,11 +8,13 @@ class ProjectContainer extends React.Component {
   render() {
     const projects = this.props.projects;
     const handleSubmitProject = this.props.handleSubmitProject;
+    const handleChangeProjectForm = this.props.handleChangeProjectForm;
     const projectFormValues = this.props.projectFormValues;
     return (
       <div>
         <ProjectForm
           handleSubmitProject={handleSubmitProject}
+          handleChangeProjectForm={handleChangeProjectForm}
           projectFormValues={projectFormValues}
         />
         <ProjectList projects={projects} />

@@ -14,6 +14,7 @@ const ProjectForm = props => {
   console.log("In ProjectForm, props are: ", props);
   const projectFormValues = props.projectFormValues;
   const handleSubmitProject = props.handleSubmitProject;
+  const handleChangeProjectForm = props.handleChangeProjectForm;
   return (
     <div>
       <form onSubmit={handleSubmitProject}>
@@ -26,6 +27,7 @@ const ProjectForm = props => {
           name="title"
           margin="normal"
           value={projectFormValues.title}
+          onChange={handleChangeProjectForm}
         />
       </form>
     </div>

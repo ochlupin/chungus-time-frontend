@@ -14,7 +14,7 @@ const timersAPI = "http://localhost:5000/api/v1/timers";
 const projectsAPI = "http://localhost:5000/api/v1/projects";
 const initialTimerFormValues = {
   title: "",
-  seconds: null
+  seconds: 0
 };
 const initialProjectFormValues = {
   title: "Title"
@@ -56,11 +56,15 @@ class App extends Component {
 
   // EVENT HANDLERS
 
-  // handleChange = event => {
-  //   const userInput = event.target.value;
-  //   console.log('User Inputg is :', userInput);
-  //   const newForm
-  // }
+  handleChangeProjectForm = event => {
+    const userInput = event.target.value;
+    console.log("User Input is :", userInput);
+    const newProjectFormValues = {
+      ...this.state.projectFormValues,
+      [event.target.name]: userInput
+    };
+    this.setState({ projectFormValues: newProjectFormValues });
+  };
 
   handleSubmitProject = event => {
     event.preventDefault();
@@ -91,6 +95,7 @@ class App extends Component {
     const timers = this.state.timers;
     const projects = this.state.projects;
     const handleSubmitProject = this.handleSubmitProject;
+    const handleChangeProjectForm = this.handleChangeProjectForm;
     const addProject = this.addProject;
     const projectFormValues = this.state.projectFormValues;
     return (
@@ -103,6 +108,7 @@ class App extends Component {
           projects={projects}
           projectFormValues={projectFormValues}
           handleSubmitProject={handleSubmitProject}
+          handleChangeProjectForm={handleChangeProjectForm}
         />
       </div>
     );
