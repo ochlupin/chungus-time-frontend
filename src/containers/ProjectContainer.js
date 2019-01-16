@@ -7,9 +7,14 @@ const projectsAPI = "http://localhost:5000/api/v1/projects";
 class ProjectContainer extends React.Component {
   render() {
     const projects = this.props.projects;
+    const handleSubmitProject = this.props.handleSubmitProject;
+    const projectFormValues = this.props.projectFormValues;
     return (
       <div>
-        <ProjectForm />
+        <ProjectForm
+          handleSubmitProject={handleSubmitProject}
+          projectFormValues={projectFormValues}
+        />
         <ProjectList projects={projects} />
       </div>
     );

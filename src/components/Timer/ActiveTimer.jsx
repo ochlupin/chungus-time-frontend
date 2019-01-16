@@ -18,7 +18,6 @@ class ActiveTimer extends React.Component {
         {({ start, resume, pause, stop, reset, timerState }) => (
           <React.Fragment>
             <div>
-              <Timer.Days /> days |
               <Timer.Hours /> hours |
               <Timer.Minutes /> minutes |
               <Timer.Seconds /> seconds

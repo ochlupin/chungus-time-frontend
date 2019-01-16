@@ -10,14 +10,23 @@ import NavigationIcon from "@material-ui/icons/Navigation";
 import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 
-const ProjectForm = () => {
+const ProjectForm = props => {
+  console.log("In ProjectForm, props are: ", props);
+  const projectFormValues = props.projectFormValues;
+  const handleSubmitProject = props.handleSubmitProject;
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmitProject}>
         <Button color="primary" variant="contained" size="large">
           Create a Project
         </Button>
-        <TextField id="standard-name" label="Name" margin="normal" />
+        <TextField
+          id="standard-name"
+          label="title"
+          name="title"
+          margin="normal"
+          value={projectFormValues.title}
+        />
       </form>
     </div>
   );

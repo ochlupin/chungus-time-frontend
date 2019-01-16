@@ -16,8 +16,8 @@ const initialTimerFormValues = {
   title: "",
   seconds: null
 };
-const initialProjectFormvalues = {
-  title: ""
+const initialProjectFormValues = {
+  title: "Title"
 };
 
 class App extends Component {
@@ -25,7 +25,7 @@ class App extends Component {
     timers: [],
     projects: [],
     timerFormValues: initialTimerFormValues,
-    projectFormValues: initialProjectFormvalues
+    projectFormValues: initialProjectFormValues
   };
 
   componentDidMount() {
@@ -56,20 +56,54 @@ class App extends Component {
 
   // EVENT HANDLERS
 
-  handleSubmit = event => {
+  // handleChange = event => {
+  //   const userInput = event.target.value;
+  //   console.log('User Inputg is :', userInput);
+  //   const newForm
+  // }
+
+  handleSubmitProject = event => {
     event.preventDefault();
+    const { title } = this.state.projectFormValues;
+    const headers = {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    };
+    fetch(projectsAPI, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({
+        title: title
+      })
+    })
+      .then(r => r.json())
+      .then(project => this.addProject(project))
+      .catch(error => console.error(error));
+    this.setState({ projectFormValues: initialProjectFormValues });
   };
 
+  addProject = project => {
+    this.setState({
+      projects: [...this.state.projects, project]
+    });
+  };
   render() {
     const timers = this.state.timers;
     const projects = this.state.projects;
+    const handleSubmitProject = this.handleSubmitProject;
+    const addProject = this.addProject;
+    const projectFormValues = this.state.projectFormValues;
     return (
       <div className="App">
         <TimerContainer timers={timers} />
         <br />
         <br />
         <br />
-        <ProjectContainer projects={projects} />
+        <ProjectContainer
+          projects={projects}
+          projectFormValues={projectFormValues}
+          handleSubmitProject={handleSubmitProject}
+        />
       </div>
     );
   }
