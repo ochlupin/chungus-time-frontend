@@ -17,6 +17,9 @@ class ProjectContainer extends React.Component {
           handleChangeProjectForm={handleChangeProjectForm}
           projectFormValues={projectFormValues}
         />
+        <br />
+        <br />
+        <br />
         <ProjectList projects={projects} />
       </div>
     );

@@ -21,6 +21,7 @@ const ProjectForm = props => {
         <Button color="primary" variant="contained" size="large">
           Create a Project
         </Button>
+        <br />
         <TextField
           id="standard-name"
           label="title"

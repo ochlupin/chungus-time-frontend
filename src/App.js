@@ -111,7 +111,7 @@ class App extends Component {
       })
     })
       .then(r => r.json())
-      .then(project => this.addTimer(project))
+      .then(timer => this.addTimer(timer))
       .catch(error => console.error(error));
     this.setState({ timerFormValues: initialTimerFormValues });
   };
@@ -130,8 +130,8 @@ class App extends Component {
     const timers = this.state.timers;
     const projects = this.state.projects;
     const handleSubmitProject = this.handleSubmitProject;
-    const handleChangeProjectForm = this.handleChangeProjectForm;
     const handleSubmitTimer = this.handleSubmitTimer;
+    const handleChangeProjectForm = this.handleChangeProjectForm;
     const handleChangeTimerForm = this.handleChangeTimerForm;
     const addProject = this.addProject;
     const addTimer = this.addTimer;

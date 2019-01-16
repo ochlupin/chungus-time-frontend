@@ -22,9 +22,10 @@ const TimerForm = props => {
         <Button color="primary" variant="contained" size="large">
           Create a Timer
         </Button>
+        <br />
         <TextField
           id="standard-name"
-          label="title"
+          label="Title"
           name="title"
           margin="normal"
           value={timerFormValues.title}

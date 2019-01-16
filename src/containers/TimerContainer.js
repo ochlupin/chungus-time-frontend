@@ -14,12 +14,18 @@ class TimerContainer extends React.Component {
     const timerFormValues = this.props.timerFormValues;
     return (
       <div>
+        <ActiveTimer />
+        <br />
+        <br />
+        <br />
         <TimerForm
           handleSubmitTimer={handleSubmitTimer}
           handleChangeTimerForm={handleChangeTimerForm}
           timerFormValues={timerFormValues}
         />
-        <ActiveTimer />
+        <br />
+        <br />
+        <br />
         <TimerList timers={timers} />
       </div>
     );
