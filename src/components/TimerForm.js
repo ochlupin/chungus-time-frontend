@@ -1,19 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Fab from '@material-ui/core/Fab';
-import IconButton from '@material-ui/core/IconButton';
-import AddIcon from '@material-ui/icons/Add';
-import DeleteIcon from '@material-ui/icons/Delete';
-import NavigationIcon from '@material-ui/icons/Navigation';
-import FormControl from '@material-ui/core/FormControl';
-import TextField from '@material-ui/core/TextField';
 
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
+// Material UI Imports
+// import { withStyles } from '@material-ui/core/styles';
+// import Button from '@material-ui/core/Button';
+// import Fab from '@material-ui/core/Fab';
+// import IconButton from '@material-ui/core/IconButton';
+// import AddIcon from '@material-ui/icons/Add';
+// import DeleteIcon from '@material-ui/icons/Delete';
+// import NavigationIcon from '@material-ui/icons/Navigation';
+// import FormControl from '@material-ui/core/FormControl';
+// import TextField from '@material-ui/core/TextField';
+// import FormHelperText from '@material-ui/core/FormHelperText';
+// import Input from '@material-ui/core/Input';
+// import InputLabel from '@material-ui/core/InputLabel';
+// import OutlinedInput from '@material-ui/core/OutlinedInput';
+
+// Semantic UI Imports
+import { Button, Checkbox, Form } from 'semantic-ui-react';
 
 const TimerForm = props => {
   // console.log('In TimerForm, props are: ', props);
@@ -23,36 +27,35 @@ const TimerForm = props => {
 
   return (
     <div>
-      <form onSubmit={handleSubmitTimer}>
-        Title:
-        <input
-          type="text"
-          name="title"
-          value={timerFormValues.title}
-          onChange={handleChangeTimerForm}
-        />
-        <br />
-        <br />
-        <br />
-        Duration:
-        <input
-          type="text"
-          name="seconds"
-          value={timerFormValues.seconds}
-          onChange={handleChangeTimerForm}
-        />
-        <br />
-        <br />
-        <br />
-        Project:
-        <input
-          type="text"
-          name="project_id"
-          value={timerFormValues.project_id}
-          onChange={handleChangeTimerForm}
-        />
-        <input type="submit" />
-      </form>
+      <Form onSubmit={handleSubmitTimer}>
+        <Form.Group widths="equal">
+          <Form.Input
+            fluid
+            label="Timer"
+            placeholder="What did you do?"
+            name="title"
+            value={timerFormValues.title}
+            onChange={handleChangeTimerForm}
+          />
+          <Form.Input
+            fluid
+            label="Duration"
+            placeholder="How long did it take?"
+            name="seconds"
+            value={timerFormValues.seconds}
+            onChange={handleChangeTimerForm}
+          />
+          <Form.Input
+            fluid
+            label="Project"
+            placeholder="Which Project does this belong to?"
+            name="project_id"
+            value={timerFormValues.project_id}
+            onChange={handleChangeTimerForm}
+          />
+        </Form.Group>
+        <Form.Field control={Button}>Create a Timer</Form.Field>
+      </Form>
     </div>
   );
 };

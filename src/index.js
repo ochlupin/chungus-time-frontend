@@ -3,16 +3,10 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './index.css';
+import 'semantic-ui-css/semantic.min.css';
 import * as serviceWorker from './serviceWorker';
 
-import Home from './components/Home';
-import About from './components/About';
 import App from './App';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
-import TimerContainer from './containers/TimerContainer';
-import ProjectContainer from './containers/ProjectContainer';
-import NavBar from './navigation/NavBar';
 
 ReactDOM.render(
   <Router>
