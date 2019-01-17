@@ -13,10 +13,10 @@ const NavBar = () => (
     <Button component={Link} to="/login" color="primary" variant="contained" size="large">
       Login/Sign-Up
     </Button>
-    <Button component={Link} to="/timer" color="primary" variant="contained" size="large">
+    <Button component={Link} to="/timers" color="primary" variant="contained" size="large">
       Timers
     </Button>
-    <Button component={Link} to="/project" color="primary" variant="contained" size="large">
+    <Button component={Link} to="/projects" color="primary" variant="contained" size="large">
       Projects
     </Button>
   </div>

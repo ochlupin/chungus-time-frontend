@@ -158,26 +158,38 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/login" component={SignIn} />
+        <Route path="/about" component={About} />
+        <Route path="/login" component={SignIn} />
+        <Route path="/signup" component={SignUp} />
+        <Route
+          path="/timers"
+          render={() => {
+            return (
+              <TimerContainer
+                timers={timers}
+                timerFormValues={timerFormValues}
+                handleSubmitTimer={handleSubmitTimer}
+                handleChangeTimerForm={handleChangeTimerForm}
+              />
+            );
+          }}
+        />
+        <Route
+          path="/projects"
+          render={() => {
+            return (
+              <ProjectContainer
+                projects={projects}
+                projectFormValues={projectFormValues}
+                handleSubmitProject={handleSubmitProject}
+                handleChangeProjectForm={handleChangeProjectForm}
+              />
+            );
+          }}
+        />
       </div>
     );
   }
 }
 
 export default App;
-
-{
-  /* <TimerContainer
-  timers={timers}
-  timerFormValues={timerFormValues}
-  handleSubmitTimer={handleSubmitTimer}
-  handleChangeTimerForm={handleChangeTimerForm}
-/>
-<ProjectContainer
-  projects={projects}
-  projectFormValues={projectFormValues}
-  handleSubmitProject={handleSubmitProject}
-  handleChangeProjectForm={handleChangeProjectForm}
-/> */
-}
