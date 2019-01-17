@@ -5,9 +5,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-import Home from './Home';
-import About from './About';
-
+import Home from './components/Home';
+import About from './components/About';
 import App from './App';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
@@ -17,16 +16,7 @@ import NavBar from './navigation/NavBar';
 
 ReactDOM.render(
   <Router>
-    <React.Fragment>
-      <NavBar />
-      <Route exact path="/" component={Home} />
-      <Route exact path="/about" component={About} />
-      <Route exact path="/login" component={SignIn} />
-      <Route exact path="/signup" component={SignUp} />
-      <Route exact path="/app" component={App} />
-      <Route exact path="/timer" component={TimerContainer} />
-      <Route exact path="/project" component={ProjectContainer} />
-    </React.Fragment>
+    <App />
   </Router>,
   document.getElementById('root')
 );

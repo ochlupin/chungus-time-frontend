@@ -11,13 +11,7 @@ const NavBar = () => (
       About
     </Button>
     <Button component={Link} to="/login" color="primary" variant="contained" size="large">
-      Login
-    </Button>
-    <Button component={Link} to="/signup" color="primary" variant="contained" size="large">
-      Signup
-    </Button>
-    <Button component={Link} to="/app" color="primary" variant="contained" size="large">
-      App
+      Login/Sign-Up
     </Button>
     <Button component={Link} to="/timer" color="primary" variant="contained" size="large">
       Timers

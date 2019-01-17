@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Link, Route, withRouter } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+
+// component imports
+import Home from './components/Home';
+import About from './components/About';
 import TimerContainer from './containers/TimerContainer';
 import ProjectContainer from './containers/ProjectContainer';
+import NavBar from './navigation/NavBar';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 
+//
 const timersAPI = 'http://localhost:5000/api/v1/timers';
 const projectsAPI = 'http://localhost:5000/api/v1/projects';
+const usersAPI = 'http://localhost:5000/api/v1/users';
 const initialTimerFormValues = {
   title: 'Timer',
   seconds: '0',
@@ -124,6 +133,7 @@ class App extends Component {
     this.setState({ timerFormValues: initialTimerFormValues });
   };
 
+  //STATE UPDATING
   addProject = project => {
     this.setState({
       projects: [...this.state.projects, project]
@@ -134,6 +144,7 @@ class App extends Component {
       timers: [...this.state.timers, timer]
     });
   };
+
   render() {
     const timers = this.state.timers;
     const projects = this.state.projects;
@@ -141,30 +152,32 @@ class App extends Component {
     const handleSubmitTimer = this.handleSubmitTimer;
     const handleChangeProjectForm = this.handleChangeProjectForm;
     const handleChangeTimerForm = this.handleChangeTimerForm;
-    const addProject = this.addProject;
-    const addTimer = this.addTimer;
     const projectFormValues = this.state.projectFormValues;
     const timerFormValues = this.state.timerFormValues;
     return (
       <div className="App">
-        <TimerContainer
-          timers={timers}
-          timerFormValues={timerFormValues}
-          handleSubmitTimer={handleSubmitTimer}
-          handleChangeTimerForm={handleChangeTimerForm}
-        />
-        <br />
-        <br />
-        <br />
-        <ProjectContainer
-          projects={projects}
-          projectFormValues={projectFormValues}
-          handleSubmitProject={handleSubmitProject}
-          handleChangeProjectForm={handleChangeProjectForm}
-        />
+        <NavBar />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/login" component={SignIn} />
       </div>
     );
   }
 }
 
 export default App;
+
+{
+  /* <TimerContainer
+  timers={timers}
+  timerFormValues={timerFormValues}
+  handleSubmitTimer={handleSubmitTimer}
+  handleChangeTimerForm={handleChangeTimerForm}
+/>
+<ProjectContainer
+  projects={projects}
+  projectFormValues={projectFormValues}
+  handleSubmitProject={handleSubmitProject}
+  handleChangeProjectForm={handleChangeProjectForm}
+/> */
+}
