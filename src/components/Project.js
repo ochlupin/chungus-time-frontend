@@ -1,11 +1,12 @@
-import React from "react";
+import React from 'react';
+import { Icon, Label, Menu, Table } from 'semantic-ui-react';
 
 const Project = props => {
   const { title } = props.project;
   return (
-    <div>
-      <li>{title}</li>
-    </div>
+    <Table.Row>
+      <Table.Cell>{title}</Table.Cell>
+    </Table.Row>
   );
 };
 

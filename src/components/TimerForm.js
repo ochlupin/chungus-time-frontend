@@ -54,7 +54,9 @@ const TimerForm = props => {
             onChange={handleChangeTimerForm}
           />
         </Form.Group>
-        <Form.Field control={Button}>Create a Timer</Form.Field>
+        <Button typ="submit" primary>
+          Create a Timer
+        </Button>
       </Form>
     </div>
   );
