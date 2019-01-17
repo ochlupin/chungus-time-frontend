@@ -14,6 +14,7 @@ const TimerList = props => {
             <Table.HeaderCell>Timer</Table.HeaderCell>
             <Table.HeaderCell>Duration</Table.HeaderCell>
             <Table.HeaderCell>Project</Table.HeaderCell>
+            <Table.HeaderCell>Delete</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
