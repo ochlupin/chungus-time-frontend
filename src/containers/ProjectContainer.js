@@ -9,6 +9,7 @@ class ProjectContainer extends React.Component {
     const projects = this.props.projects;
     const handleSubmitProject = this.props.handleSubmitProject;
     const handleChangeProjectForm = this.props.handleChangeProjectForm;
+    const handleDeleteProject = this.props.handleDeleteProject;
     const projectFormValues = this.props.projectFormValues;
     return (
       <div>
@@ -20,7 +21,7 @@ class ProjectContainer extends React.Component {
         <br />
         <br />
         <br />
-        <ProjectList projects={projects} />
+        <ProjectList projects={projects} handleDeleteProject={handleDeleteProject} />
       </div>
     );
   }

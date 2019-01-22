@@ -145,6 +145,12 @@ class App extends Component {
     this.setState({ timers });
   };
 
+  handleDeleteProject = async projectId => {
+    await axios.delete(`http://localhost:5000/api/v1/projects/${projectId}`);
+    const projects = this.state.projects.filter(p => p.id !== projectId);
+    this.setState({ projects });
+  };
+
   //STATE UPDATING
   addProject = project => {
     this.setState({
@@ -173,6 +179,7 @@ class App extends Component {
     const handleChangeProjectForm = this.handleChangeProjectForm;
     const handleChangeTimerForm = this.handleChangeTimerForm;
     const handleDeleteTimer = this.handleDeleteTimer;
+    const handleDeleteProject = this.handleDeleteProject;
     const removeTimer = this.removeTimer;
     return (
       <div className="App">
@@ -191,7 +198,6 @@ class App extends Component {
                 handleSubmitTimer={handleSubmitTimer}
                 handleChangeTimerForm={handleChangeTimerForm}
                 handleDeleteTimer={handleDeleteTimer}
-                removeTimer={removeTimer}
               />
             );
           }}
@@ -205,6 +211,7 @@ class App extends Component {
                 projectFormValues={projectFormValues}
                 handleSubmitProject={handleSubmitProject}
                 handleChangeProjectForm={handleChangeProjectForm}
+                handleDeleteProject={handleDeleteProject}
               />
             );
           }}
