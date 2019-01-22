@@ -5,6 +5,8 @@ import { Tab } from '@material-ui/core';
 
 const TimerList = props => {
   const timers = props.timers;
+  const removeTimer = props.removeTimer;
+  const handleDeleteTimer = props.handleDeleteTimer;
   return (
     <div>
       <h3>Active Timers</h3>
@@ -19,7 +21,12 @@ const TimerList = props => {
         </Table.Header>
         <Table.Body>
           {timers.map(timer => (
-            <TimerDetail key={timer.id} timer={timer} />
+            <TimerDetail
+              key={timer.id}
+              timer={timer}
+              removeTimer={removeTimer}
+              handleDeleteTimer={handleDeleteTimer}
+            />
           ))}
         </Table.Body>
       </Table>

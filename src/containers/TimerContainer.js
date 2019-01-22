@@ -6,13 +6,14 @@ import { Icon, Label, Menu, Table } from 'semantic-ui-react';
 const timersAPI = 'http://localhost:5000/api/v1/timers';
 
 class TimerContainer extends React.Component {
-  state = {};
   render() {
     const timers = this.props.timers;
     const handleSubmitTimer = this.props.handleSubmitTimer;
     const handleChangeTimerForm = this.props.handleChangeTimerForm;
+    const handleDeleteTimer = this.props.handleDeleteTimer;
+    const removeTimer = this.props.removeTimer;
     const timerFormValues = this.props.timerFormValues;
-    debugger;
+
     return (
       <div>
         <ActiveTimer />
@@ -26,7 +27,11 @@ class TimerContainer extends React.Component {
         />
         <br />
         <br />
-        <TimerList timers={timers} />
+        <TimerList
+          timers={timers}
+          removeTimer={removeTimer}
+          handleDeleteTimer={handleDeleteTimer}
+        />
       </div>
     );
   }

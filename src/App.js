@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 import './App.css';
 import { BrowserRouter as Router, Link, Route, withRouter } from 'react-router-dom';
 
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
+// // Material UI Imports
+// import { withStyles } from '@material-ui/core/styles';
+// import AppBar from '@material-ui/core/AppBar';
+// import Tabs from '@material-ui/core/Tabs';
+// import Tab from '@material-ui/core/Tab';
+// import Typography from '@material-ui/core/Typography';
 
 // component imports
 import Home from './components/Home';
@@ -38,9 +41,12 @@ class App extends Component {
     projectFormValues: initialProjectFormValues
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.fetchTimers();
     this.fetchProjects();
+    // AXIOS FETCH
+    // const { data: timers } = await axios.get(timersAPI);
+    // this.setState({ timers: timers });
   }
 
   // FETCHES
@@ -133,6 +139,12 @@ class App extends Component {
     this.setState({ timerFormValues: initialTimerFormValues });
   };
 
+  handleDeleteTimer = async timerId => {
+    await axios.delete(`http://localhost:5000/api/v1/timers/${timerId}`);
+    const timers = this.state.timers.filter(t => t.id !== timerId);
+    this.setState({ timers });
+  };
+
   //STATE UPDATING
   addProject = project => {
     this.setState({
@@ -145,15 +157,23 @@ class App extends Component {
     });
   };
 
+  removeProject = project => {
+    console.log('yo');
+  };
+
   render() {
+    // state to props
     const timers = this.state.timers;
     const projects = this.state.projects;
+    const projectFormValues = this.state.projectFormValues;
+    const timerFormValues = this.state.timerFormValues;
+    // callbacks as props
     const handleSubmitProject = this.handleSubmitProject;
     const handleSubmitTimer = this.handleSubmitTimer;
     const handleChangeProjectForm = this.handleChangeProjectForm;
     const handleChangeTimerForm = this.handleChangeTimerForm;
-    const projectFormValues = this.state.projectFormValues;
-    const timerFormValues = this.state.timerFormValues;
+    const handleDeleteTimer = this.handleDeleteTimer;
+    const removeTimer = this.removeTimer;
     return (
       <div className="App">
         <NavBar />
@@ -170,6 +190,8 @@ class App extends Component {
                 timerFormValues={timerFormValues}
                 handleSubmitTimer={handleSubmitTimer}
                 handleChangeTimerForm={handleChangeTimerForm}
+                handleDeleteTimer={handleDeleteTimer}
+                removeTimer={removeTimer}
               />
             );
           }}
