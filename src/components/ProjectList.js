@@ -13,6 +13,7 @@ const ProjectList = props => {
           <Table.Row>
             <Table.HeaderCell>Project</Table.HeaderCell>
             <Table.HeaderCell>No. of Timers</Table.HeaderCell>
+            <Table.HeaderCell>Total Duration</Table.HeaderCell>
             <Table.HeaderCell>Delete</Table.HeaderCell>
           </Table.Row>
         </Table.Header>

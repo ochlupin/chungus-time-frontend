@@ -28,6 +28,7 @@ const TimerList = props => {
               handleDeleteTimer={handleDeleteTimer}
             />
           ))}
+          <Table.Row />
         </Table.Body>
       </Table>
     </div>

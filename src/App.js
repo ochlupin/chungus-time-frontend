@@ -38,7 +38,8 @@ class App extends Component {
     timers: [],
     projects: [],
     timerFormValues: initialTimerFormValues,
-    projectFormValues: initialProjectFormValues
+    projectFormValues: initialProjectFormValues,
+    projectSearchTerm: ''
   };
 
   async componentDidMount() {
@@ -54,9 +55,7 @@ class App extends Component {
     fetch(timersAPI)
       .then(r => r.json())
       .then(timerData => {
-        this.setState({ timers: timerData }, () => {
-          console.log('The state in App: ', timerData);
-        });
+        this.setState({ timers: timerData });
       });
   };
 
@@ -64,9 +63,7 @@ class App extends Component {
     fetch(projectsAPI)
       .then(r => r.json())
       .then(projectData => {
-        this.setState({ projects: projectData }, () => {
-          console.log('The state in App: ', projectData);
-        });
+        this.setState({ projects: projectData });
       });
   };
 
@@ -163,16 +160,29 @@ class App extends Component {
     });
   };
 
-  removeProject = project => {
-    console.log('yo');
+  updateProjectSearchTerm = event => {
+    const projectSearchTerm = event.target.value;
+    this.setState({ projectSearchTerm: projectSearchTerm });
   };
 
+  projectsToDisplay = () => {
+    return this.state.projects.filter(project =>
+      project.title.toLowerCase().includes(this.state.projectSearchTerm.toLowerCase())
+    );
+  };
+
+  timersToDisplay = () => {
+    return this.state.timers.filter(timer =>
+      timer.project.title.toLowerCase().includes(this.state.projectSearchTerm.toLowerCase())
+    );
+  };
   render() {
     // state to props
-    const timers = this.state.timers;
-    const projects = this.state.projects;
+    const timers = this.timersToDisplay();
+    const projects = this.projectsToDisplay();
     const projectFormValues = this.state.projectFormValues;
     const timerFormValues = this.state.timerFormValues;
+    const projectSearchTerm = this.state.projectSearchTerm;
     // callbacks as props
     const handleSubmitProject = this.handleSubmitProject;
     const handleSubmitTimer = this.handleSubmitTimer;
@@ -180,7 +190,8 @@ class App extends Component {
     const handleChangeTimerForm = this.handleChangeTimerForm;
     const handleDeleteTimer = this.handleDeleteTimer;
     const handleDeleteProject = this.handleDeleteProject;
-    const removeTimer = this.removeTimer;
+    const updateProjectSearchTerm = this.updateProjectSearchTerm;
+
     return (
       <div className="App">
         <NavBar />
@@ -198,6 +209,8 @@ class App extends Component {
                 handleSubmitTimer={handleSubmitTimer}
                 handleChangeTimerForm={handleChangeTimerForm}
                 handleDeleteTimer={handleDeleteTimer}
+                projectSearchTerm={projectSearchTerm}
+                updateProjectSearchTerm={updateProjectSearchTerm}
               />
             );
           }}
@@ -212,6 +225,8 @@ class App extends Component {
                 handleSubmitProject={handleSubmitProject}
                 handleChangeProjectForm={handleChangeProjectForm}
                 handleDeleteProject={handleDeleteProject}
+                projectSearchTerm={projectSearchTerm}
+                updateProjectSearchTerm={updateProjectSearchTerm}
               />
             );
           }}

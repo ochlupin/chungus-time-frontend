@@ -1,6 +1,7 @@
 import React from 'react';
 import ProjectForm from '../components/ProjectForm';
 import ProjectList from '../components/ProjectList';
+import ProjectFilter from '../components/ProjectFilter';
 
 const projectsAPI = 'http://localhost:5000/api/v1/projects';
 
@@ -11,6 +12,8 @@ class ProjectContainer extends React.Component {
     const handleChangeProjectForm = this.props.handleChangeProjectForm;
     const handleDeleteProject = this.props.handleDeleteProject;
     const projectFormValues = this.props.projectFormValues;
+    const projectSearchTerm = this.props.projectSearchTerm;
+    const updateProjectSearchTerm = this.props.updateProjectSearchTerm;
     return (
       <div>
         <ProjectForm
@@ -21,6 +24,10 @@ class ProjectContainer extends React.Component {
         <br />
         <br />
         <br />
+        <ProjectFilter
+          updateProjectSearchTerm={updateProjectSearchTerm}
+          projectSearchTerm={projectSearchTerm}
+        />
         <ProjectList projects={projects} handleDeleteProject={handleDeleteProject} />
       </div>
     );
