@@ -8,7 +8,7 @@ const TimerList = props => {
   const removeTimer = props.removeTimer;
   const handleDeleteTimer = props.handleDeleteTimer;
 
-  const timerSum = () => {
+  const durationSum = () => {
     let total = 0;
     timers.forEach(timer => {
       total += parseInt(timer.seconds);
@@ -18,13 +18,22 @@ const TimerList = props => {
   return (
     <div>
       <h3>Active Timers</h3>
-      <Table celled>
+      <Table celled color="blue">
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Timer</Table.HeaderCell>
-            <Table.HeaderCell>Duration</Table.HeaderCell>
-            <Table.HeaderCell>Project</Table.HeaderCell>
-            <Table.HeaderCell>Delete</Table.HeaderCell>
+            <Table.HeaderCell inverted color="blue">
+              Timer <Icon name="tasks" />
+            </Table.HeaderCell>
+            <Table.HeaderCell>
+              Duration
+              <Icon name="time" />
+            </Table.HeaderCell>
+            <Table.HeaderCell>
+              Project <Icon name="sitemap" />
+            </Table.HeaderCell>
+            <Table.HeaderCell>
+              Delete <Icon name="delete" />
+            </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -38,7 +47,7 @@ const TimerList = props => {
           ))}
           <Table.Row>
             <Table.Cell>Total Duration</Table.Cell>
-            <Table.Cell>{timerSum()} seconds</Table.Cell>
+            <Table.Cell>{durationSum()} seconds</Table.Cell>
           </Table.Row>
           <Table.Row />
         </Table.Body>

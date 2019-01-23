@@ -58,13 +58,12 @@ const TimerForm = props => {
             search
             name="project_id"
             placeholder="Which Project does this belong to?"
-            label="Project"
             options={projectOptions}
             onChange={handleChangeTimerForm}
             value={timerFormValues.project_id}
           />
         </Form.Group>
-        <Button typ="submit" primary>
+        <Button type="submit" primary>
           Create a Timer
         </Button>
       </Form>
