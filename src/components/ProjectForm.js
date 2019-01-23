@@ -13,7 +13,7 @@ import React from 'react';
 // import TextField from '@material-ui/core/TextField';
 
 // Semantic UI Imports
-import { Button, Checkbox, Form } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Icon } from 'semantic-ui-react';
 
 const ProjectForm = props => {
   // console.log("In ProjectForm, props are: ", props);
@@ -33,7 +33,8 @@ const ProjectForm = props => {
             onChange={handleChangeProjectForm}
           />
         </Form.Group>
-        <Button type="submit" primary>
+        <Button type="submit" primary icon labelPosition="right">
+          <Icon name="add" />
           Create a Project
         </Button>
       </Form>

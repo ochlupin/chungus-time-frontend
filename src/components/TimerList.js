@@ -21,7 +21,7 @@ const TimerList = props => {
       <Table celled color="blue">
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell inverted color="blue">
+            <Table.HeaderCell>
               Timer <Icon name="tasks" />
             </Table.HeaderCell>
             <Table.HeaderCell>

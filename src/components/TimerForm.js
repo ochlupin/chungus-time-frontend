@@ -17,7 +17,7 @@ import PropTypes from 'prop-types';
 // import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 // Semantic UI Imports
-import { Button, Checkbox, Form, Dropdown } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Dropdown, Icon } from 'semantic-ui-react';
 
 const TimerForm = props => {
   // console.log('In TimerForm, props are: ', props);
@@ -63,7 +63,8 @@ const TimerForm = props => {
             value={timerFormValues.project_id}
           />
         </Form.Group>
-        <Button type="submit" primary>
+        <Button type="submit" color="linkedin" icon labelPosition="right">
+          <Icon name="add" />
           Create a Timer
         </Button>
       </Form>
