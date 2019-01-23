@@ -1,5 +1,6 @@
 import React from 'react';
 import TimerDetail from './TimerDetail';
+import ReactTable from 'react-table';
 import { Icon, Label, Menu, Table, TransitionablePortal } from 'semantic-ui-react';
 import { Tab } from '@material-ui/core';
 
@@ -18,7 +19,7 @@ const TimerList = props => {
   return (
     <div>
       <h3>Active Timers</h3>
-      <Table celled color="blue">
+      <Table sortable celled color="blue">
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>
@@ -45,12 +46,13 @@ const TimerList = props => {
               handleDeleteTimer={handleDeleteTimer}
             />
           ))}
-          <Table.Row>
-            <Table.Cell>Total Duration</Table.Cell>
-            <Table.Cell>{durationSum()} seconds</Table.Cell>
-          </Table.Row>
-          <Table.Row />
         </Table.Body>
+      </Table>
+      <Table celled inverted color="blue">
+        <Table.Row>
+          <Table.Cell>Total Duration</Table.Cell>
+          <Table.Cell>{durationSum()} seconds</Table.Cell>
+        </Table.Row>
       </Table>
     </div>
   );
