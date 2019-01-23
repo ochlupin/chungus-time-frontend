@@ -17,13 +17,20 @@ import PropTypes from 'prop-types';
 // import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 // Semantic UI Imports
-import { Button, Checkbox, Form } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Dropdown } from 'semantic-ui-react';
 
 const TimerForm = props => {
   // console.log('In TimerForm, props are: ', props);
   const timerFormValues = props.timerFormValues;
   const handleSubmitTimer = props.handleSubmitTimer;
   const handleChangeTimerForm = props.handleChangeTimerForm;
+  const projects = props.projects;
+  const projectOptions = projects.map(project => {
+    return {
+      text: project.title,
+      value: project.id
+    };
+  });
 
   return (
     <div>
@@ -45,13 +52,16 @@ const TimerForm = props => {
             value={timerFormValues.seconds}
             onChange={handleChangeTimerForm}
           />
-          <Form.Input
+          <Dropdown
             fluid
-            label="Project"
-            placeholder="Which Project does this belong to?"
+            selection
+            search
             name="project_id"
-            value={timerFormValues.project_id}
+            placeholder="Which Project does this belong to?"
+            label="Project"
+            options={projectOptions}
             onChange={handleChangeTimerForm}
+            value={timerFormValues.project_id}
           />
         </Form.Group>
         <Button typ="submit" primary>
@@ -63,52 +73,3 @@ const TimerForm = props => {
 };
 
 export default TimerForm;
-
-{
-  /* <form onSubmit={handleSubmitTimer}>
-  <br />
-  <TextField
-  id="standard-name"
-  label="Title"
-  name="title"
-  margin="normal"
-  value={timerFormValues.title}
-  onChange={handleChangeTimerForm}
-  />
-  <TextField
-  id="standard-name"
-  label="Duration"
-  name="seconds"
-  margin="normal"
-  value={timerFormValues.seconds}
-  onChange={handleChangeTimerForm}
-  />
-  </form> */
-}
-
-{
-  /* <Button color="primary" variant="contained" size="large">
-  Create a Timer
-  </Button> */
-}
-
-{
-  /* <FormControl>
-    <InputLabel htmlFor="component-simple">Title</InputLabel>
-    <Input
-      id="component-simple"
-      name="title"
-      value={timerFormValues.title}
-      onChange={handleChangeTimerForm}
-    />
-  </FormControl>
-  <FormControl>
-    <InputLabel htmlFor="component-simple">Duration</InputLabel>
-    <Input
-      id="component-simple"
-      name="seconds"
-      value={timerFormValues.seconds}
-      onChange={handleChangeTimerForm}
-    />
-  </FormControl> */
-}

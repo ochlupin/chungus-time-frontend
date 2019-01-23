@@ -9,7 +9,7 @@ const Project = props => {
     <Table.Row>
       <Table.Cell>{title}</Table.Cell>
       <Table.Cell>{props.project.timers.length}</Table.Cell>
-      <Table.Cell>TotalDuration</Table.Cell>
+      <Table.Cell>Total Duration</Table.Cell>
       <Table.Cell>
         <Button onClick={() => handleDeleteProject(id)}>
           <Icon name="trash alternate outline" />

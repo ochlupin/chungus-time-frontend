@@ -3,7 +3,7 @@ import { Icon, Label, Menu, Table, Button } from 'semantic-ui-react';
 
 const TimerDetail = props => {
   const { title, seconds, id } = props.timer;
-  const removeTimer = props.removeTimer;
+
   const handleDeleteTimer = props.handleDeleteTimer;
 
   return (

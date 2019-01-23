@@ -27,7 +27,8 @@ const usersAPI = 'http://localhost:5000/api/v1/users';
 const initialTimerFormValues = {
   title: 'Timer',
   seconds: '0',
-  project_id: 0
+  project_id: 0,
+  project_title: ''
 };
 const initialProjectFormValues = {
   title: 'Title'
@@ -78,12 +79,13 @@ class App extends Component {
     };
     this.setState({ projectFormValues: newProjectFormValues });
   };
-  handleChangeTimerForm = event => {
+  handleChangeTimerForm = (event, { name, value }) => {
+    console.log(name, value);
     const userInput = event.target.value;
     // console.log('User Input is :', userInput);
     const newTimerFormValues = {
       ...this.state.timerFormValues,
-      [event.target.name]: userInput
+      [name]: value
     };
     this.setState({ timerFormValues: newTimerFormValues });
   };
@@ -112,7 +114,7 @@ class App extends Component {
     // console.log(event, 'state', this.state.timerFormValues);
 
     event.preventDefault();
-    const { title, seconds, project_id } = this.state.timerFormValues;
+    const { title, seconds, project_id, project_title } = this.state.timerFormValues;
     // console.log('destructure', title, seconds, project_id);
     const body = JSON.stringify({
       // timer: { title: title, seconds: seconds, project_id: project_id, user_id: 1 }
@@ -205,6 +207,7 @@ class App extends Component {
             return (
               <TimerContainer
                 timers={timers}
+                projects={projects}
                 timerFormValues={timerFormValues}
                 handleSubmitTimer={handleSubmitTimer}
                 handleChangeTimerForm={handleChangeTimerForm}
