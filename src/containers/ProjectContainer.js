@@ -10,6 +10,8 @@ class ProjectContainer extends React.Component {
     const projects = this.props.projects;
     const users = this.props.users;
     const timers = this.props.timer;
+    const timerFormValues = this.props.timerFormValues;
+
     const handleSubmitProject = this.props.handleSubmitProject;
     const handleChangeProjectForm = this.props.handleChangeProjectForm;
     const handleDeleteProject = this.props.handleDeleteProject;
@@ -29,6 +31,7 @@ class ProjectContainer extends React.Component {
         <ProjectFilter
           updateProjectSearchTerm={updateProjectSearchTerm}
           projectSearchTerm={projectSearchTerm}
+          projects={projects}
         />
         <ProjectList
           projects={projects}

@@ -7,14 +7,24 @@ const Project = props => {
   const handleDeleteProject = props.handleDeleteProject;
   const timers = props.project.timers;
   const users = props.project.users;
-  const uniqueUsers = _.uniqBy(users, id);
+  const uniqueUsers = _.uniqBy(users, "id");
+  const timerSeconds = timers.map(timer => {
+    return parseInt(timer.seconds);
+  });
+  const secondsTotal = _.reduce(
+    timerSeconds,
+    function(sum, n) {
+      return sum + n;
+    },
+    0
+  );
 
   return (
     <Table.Row>
       <Table.Cell>{title}</Table.Cell>
       <Table.Cell>{timers.length}</Table.Cell>
       <Table.Cell>{uniqueUsers.length}</Table.Cell>
-      <Table.Cell>Total Duration</Table.Cell>
+      <Table.Cell>{secondsTotal} seconds</Table.Cell>
       <Table.Cell>
         <Button onClick={() => handleDeleteProject(id)}>
           <Icon name="trash alternate outline" />

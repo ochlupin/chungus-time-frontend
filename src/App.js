@@ -33,8 +33,8 @@ const usersAPI = "http://localhost:5000/api/v1/users";
 const initialTimerFormValues = {
   title: "Timer",
   seconds: "0",
-  project_id: 0,
-  user_id: 0
+  project_id: "",
+  user_id: ""
 };
 const initialProjectFormValues = {
   title: "Title"
@@ -97,8 +97,7 @@ class App extends Component {
   };
   handleChangeTimerForm = (event, { name, value }) => {
     console.log(name, value);
-    const userInput = event.target.value;
-    // console.log('User Input is :', userInput);
+
     const newTimerFormValues = {
       ...this.state.timerFormValues,
       [name]: value
@@ -178,8 +177,9 @@ class App extends Component {
     });
   };
 
-  updateProjectSearchTerm = event => {
-    const projectSearchTerm = event.target.value;
+  updateProjectSearchTerm = (event, { name, value }) => {
+    console.log(name, value);
+    const projectSearchTerm = value;
     this.setState({ projectSearchTerm: projectSearchTerm });
   };
 
@@ -254,6 +254,7 @@ class App extends Component {
                 handleDeleteProject={handleDeleteProject}
                 projectSearchTerm={projectSearchTerm}
                 updateProjectSearchTerm={updateProjectSearchTerm}
+                timerFormValues={timerFormValues}
               />
             );
           }}

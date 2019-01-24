@@ -61,6 +61,9 @@ const TimerForm = props => {
             onChange={handleChangeTimerForm}
           />
           <Dropdown
+            scrolling
+            wrapSelection
+            labeled
             fluid
             selection
             search
@@ -71,6 +74,9 @@ const TimerForm = props => {
             value={timerFormValues.project_id}
           />
           <Dropdown
+            scrolling
+            wrapSelection
+            labeled
             fluid
             selection
             search

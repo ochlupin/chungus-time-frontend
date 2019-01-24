@@ -8,10 +8,13 @@ const ProjectList = props => {
   const projects = props.projects;
   const handleDeleteProject = props.handleDeleteProject;
   const timers = props.projects.timers;
+  const users = props.projects.users;
+  const uniqueUsers = _.uniqBy(users, "id");
+
   const columns = [
     { Header: "Project", accessor: "title" },
     { Header: "No. of Timers", accessor: "timers.length" },
-    { Header: "No. of Users", accessor: "users.length" }
+    { Header: "No. of Users", accessor: "uniqueUsers.length" }
   ];
 
   return (
@@ -23,8 +26,13 @@ const ProjectList = props => {
             <Table.HeaderCell>
               Project <Icon name="sitemap" />
             </Table.HeaderCell>
-            <Table.HeaderCell>No. of Timers</Table.HeaderCell>
-            <Table.HeaderCell>No. of Users</Table.HeaderCell>
+            <Table.HeaderCell>
+              No. of Timers
+              <Icon name="tasks" />
+            </Table.HeaderCell>
+            <Table.HeaderCell>
+              No. of Users <Icon name="user" />
+            </Table.HeaderCell>
             <Table.HeaderCell>
               Total Duration <Icon name="time" />
             </Table.HeaderCell>

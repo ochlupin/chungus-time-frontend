@@ -2,20 +2,24 @@ import React from "react";
 import TimerDetail from "./TimerDetail";
 import ReactTable from "react-table";
 import { Icon, Label, Menu, Table } from "semantic-ui-react";
+import _ from "lodash";
 // import { Tab } from "@material-ui/core";
 
 const TimerList = props => {
   const timers = props.timers;
+  const timerSeconds = timers.map(timer => {
+    return parseInt(timer.seconds);
+  });
   const removeTimer = props.removeTimer;
   const handleDeleteTimer = props.handleDeleteTimer;
 
-  const durationSum = () => {
-    let total = 0;
-    timers.forEach(timer => {
-      total += parseInt(timer.seconds);
-    });
-    return total;
-  };
+  const durationSum = _.reduce(
+    timerSeconds,
+    function(sum, n) {
+      return sum + n;
+    },
+    0
+  );
   return (
     <div>
       <h3>Active Timers</h3>
@@ -54,7 +58,7 @@ const TimerList = props => {
       <Table celled inverted color="blue">
         <Table.Row>
           <Table.Cell>Total Duration</Table.Cell>
-          <Table.Cell>{durationSum()} seconds</Table.Cell>
+          <Table.Cell>{durationSum} seconds</Table.Cell>
         </Table.Row>
       </Table>
     </div>

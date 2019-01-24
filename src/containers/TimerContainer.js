@@ -39,6 +39,9 @@ class TimerContainer extends React.Component {
         <ProjectFilter
           updateProjectSearchTerm={updateProjectSearchTerm}
           projectSearchTerm={projectSearchTerm}
+          projects={projects}
+          users={users}
+          timers={timers}
         />
         <TimerList
           timers={timers}
