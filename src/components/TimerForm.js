@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 // Material UI Imports
 // import { withStyles } from '@material-ui/core/styles';
@@ -17,10 +16,9 @@ import PropTypes from "prop-types";
 // import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 // Semantic UI Imports
-import { Button, Checkbox, Form, Dropdown, Icon } from "semantic-ui-react";
+import { Button, Form, Dropdown, Icon } from "semantic-ui-react";
 
 const TimerForm = props => {
-  // console.log('In TimerForm, props are: ', props);
   const timerFormValues = props.timerFormValues;
   const handleSubmitTimer = props.handleSubmitTimer;
   const handleChangeTimerForm = props.handleChangeTimerForm;

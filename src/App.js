@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import _ from "lodash";
-import Moment from "react-moment";
 
 import "./App.css";
 import {
@@ -11,14 +10,6 @@ import {
   withRouter
 } from "react-router-dom";
 
-// // Material UI Imports
-// import { withStyles } from '@material-ui/core/styles';
-// import AppBar from '@material-ui/core/AppBar';
-// import Tabs from '@material-ui/core/Tabs';
-// import Tab from '@material-ui/core/Tab';
-// import Typography from '@material-ui/core/Typography';
-
-// component imports
 import Home from "./components/Home";
 import About from "./components/About";
 import TimerContainer from "./containers/TimerContainer";
@@ -32,8 +23,8 @@ const timersAPI = "http://localhost:5000/api/v1/timers";
 const projectsAPI = "http://localhost:5000/api/v1/projects";
 const usersAPI = "http://localhost:5000/api/v1/users";
 const initialTimerFormValues = {
-  title: "Timer",
-  seconds: "0",
+  title: "",
+  seconds: "",
   project_id: "",
   user_id: ""
 };
@@ -98,8 +89,6 @@ class App extends Component {
     this.setState({ projectFormValues: newProjectFormValues });
   };
   handleChangeTimerForm = (event, { name, value }) => {
-    console.log(name, value);
-
     const newTimerFormValues = {
       ...this.state.timerFormValues,
       [name]: value
@@ -180,15 +169,13 @@ class App extends Component {
   };
 
   updateProjectSearchTerm = (event, { name, value }) => {
-    console.log(name, value);
     const projectSearchTerm = value;
     this.setState({ projectSearchTerm: projectSearchTerm });
   };
-  updateTimerSearchTerm = (event, { name, value }) => {
-    console.log(name, value);
-    const timerSearchTerm = value;
-    this.setState({ timerSearchTerm: timerSearchTerm });
-  };
+  // updateTimerSearchTerm = (event, { name, value }) => {
+  //   const timerSearchTerm = value;
+  //   this.setState({ timerSearchTerm: timerSearchTerm });
+  // };
 
   projectsToDisplay = () => {
     return this.state.projects.filter(project =>

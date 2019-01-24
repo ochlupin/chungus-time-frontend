@@ -42,6 +42,19 @@ const TimerList = props => {
   return (
     <div>
       <h3>Active Timers</h3>
+      <BarChart width={1920} height={600} data={timers}>
+        <Tooltip />
+        <Legend />
+        <XAxis dataKey="title" />
+        <YAxis />
+        <Bar
+          name="Duration (secs)"
+          type="monotone"
+          dataKey="seconds"
+          barSize={30}
+          fill="#1F85D0"
+        />
+      </BarChart>
       <Table sortable celled color="blue">
         <Table.Header>
           <Table.Row>
@@ -82,19 +95,6 @@ const TimerList = props => {
         </Table.Body>
       </Table>
       <Table celled inverted color="blue" />
-      <BarChart width={1200} height={1000} data={timers}>
-        <Tooltip />
-        <Legend />
-        <XAxis dataKey="title" />
-        <YAxis />
-        <Bar
-          name="Duration (secs)"
-          type="monotone"
-          dataKey="seconds"
-          barSize={30}
-          fill="#1F85D0"
-        />
-      </BarChart>
     </div>
   );
 };
