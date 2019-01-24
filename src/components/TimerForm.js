@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 // Material UI Imports
 // import { withStyles } from '@material-ui/core/styles';
@@ -17,7 +17,7 @@ import PropTypes from 'prop-types';
 // import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 // Semantic UI Imports
-import { Button, Checkbox, Form, Dropdown, Icon } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Dropdown, Icon } from "semantic-ui-react";
 
 const TimerForm = props => {
   // console.log('In TimerForm, props are: ', props);
@@ -25,10 +25,18 @@ const TimerForm = props => {
   const handleSubmitTimer = props.handleSubmitTimer;
   const handleChangeTimerForm = props.handleChangeTimerForm;
   const projects = props.projects;
+  const users = props.users;
   const projectOptions = projects.map(project => {
     return {
       text: project.title,
       value: project.id
+    };
+  });
+
+  const userOptions = users.map(user => {
+    return {
+      text: user.username,
+      value: user.id
     };
   });
 
@@ -61,6 +69,16 @@ const TimerForm = props => {
             options={projectOptions}
             onChange={handleChangeTimerForm}
             value={timerFormValues.project_id}
+          />
+          <Dropdown
+            fluid
+            selection
+            search
+            name="user_id"
+            placeholder="Which User is this timer assigned to?"
+            options={userOptions}
+            onChange={handleChangeTimerForm}
+            value={timerFormValues.user_id}
           />
         </Form.Group>
         <Button type="submit" color="linkedin" icon labelPosition="right">

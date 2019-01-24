@@ -1,8 +1,14 @@
-import React from 'react';
-import TimerDetail from './TimerDetail';
-import ReactTable from 'react-table';
-import { Icon, Label, Menu, Table, TransitionablePortal } from 'semantic-ui-react';
-import { Tab } from '@material-ui/core';
+import React from "react";
+import TimerDetail from "./TimerDetail";
+import ReactTable from "react-table";
+import {
+  Icon,
+  Label,
+  Menu,
+  Table,
+  TransitionablePortal
+} from "semantic-ui-react";
+import { Tab } from "@material-ui/core";
 
 const TimerList = props => {
   const timers = props.timers;
@@ -31,6 +37,9 @@ const TimerList = props => {
             </Table.HeaderCell>
             <Table.HeaderCell>
               Project <Icon name="sitemap" />
+            </Table.HeaderCell>
+            <Table.HeaderCell>
+              User <Icon name="delete" />
             </Table.HeaderCell>
             <Table.HeaderCell>
               Delete <Icon name="delete" />

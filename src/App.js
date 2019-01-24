@@ -1,8 +1,13 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
-import './App.css';
-import { BrowserRouter as Router, Link, Route, withRouter } from 'react-router-dom';
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  withRouter
+} from "react-router-dom";
 
 // // Material UI Imports
 // import { withStyles } from '@material-ui/core/styles';
@@ -12,40 +17,42 @@ import { BrowserRouter as Router, Link, Route, withRouter } from 'react-router-d
 // import Typography from '@material-ui/core/Typography';
 
 // component imports
-import Home from './components/Home';
-import About from './components/About';
-import TimerContainer from './containers/TimerContainer';
-import ProjectContainer from './containers/ProjectContainer';
-import NavBar from './navigation/NavBar';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
+import Home from "./components/Home";
+import About from "./components/About";
+import TimerContainer from "./containers/TimerContainer";
+import ProjectContainer from "./containers/ProjectContainer";
+import NavBar from "./navigation/NavBar";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
 //
-const timersAPI = 'http://localhost:5000/api/v1/timers';
-const projectsAPI = 'http://localhost:5000/api/v1/projects';
-const usersAPI = 'http://localhost:5000/api/v1/users';
+const timersAPI = "http://localhost:5000/api/v1/timers";
+const projectsAPI = "http://localhost:5000/api/v1/projects";
+const usersAPI = "http://localhost:5000/api/v1/users";
 const initialTimerFormValues = {
-  title: 'Timer',
-  seconds: '0',
+  title: "Timer",
+  seconds: "0",
   project_id: 0,
-  project_title: ''
+  user_id: 0
 };
 const initialProjectFormValues = {
-  title: 'Title'
+  title: "Title"
 };
 
 class App extends Component {
   state = {
     timers: [],
     projects: [],
+    users: [],
     timerFormValues: initialTimerFormValues,
     projectFormValues: initialProjectFormValues,
-    projectSearchTerm: ''
+    projectSearchTerm: ""
   };
 
   async componentDidMount() {
     this.fetchTimers();
     this.fetchProjects();
+    this.fetchUsers();
     // AXIOS FETCH
     // const { data: timers } = await axios.get(timersAPI);
     // this.setState({ timers: timers });
@@ -65,6 +72,14 @@ class App extends Component {
       .then(r => r.json())
       .then(projectData => {
         this.setState({ projects: projectData });
+      });
+  };
+
+  fetchUsers = () => {
+    fetch(usersAPI)
+      .then(r => r.json())
+      .then(userData => {
+        this.setState({ users: userData });
       });
   };
 
@@ -94,11 +109,11 @@ class App extends Component {
     event.preventDefault();
     const { title } = this.state.projectFormValues;
     const headers = {
-      'Content-Type': 'application/json',
-      Accept: 'application/json'
+      "Content-Type": "application/json",
+      Accept: "application/json"
     };
     fetch(projectsAPI, {
-      method: 'POST',
+      method: "POST",
       headers: headers,
       body: JSON.stringify({
         title: title
@@ -114,21 +129,21 @@ class App extends Component {
     // console.log(event, 'state', this.state.timerFormValues);
 
     event.preventDefault();
-    const { title, seconds, project_id, project_title } = this.state.timerFormValues;
+    const { title, seconds, project_id, user_id } = this.state.timerFormValues;
     // console.log('destructure', title, seconds, project_id);
     const body = JSON.stringify({
       // timer: { title: title, seconds: seconds, project_id: project_id, user_id: 1 }
       title: title,
       seconds: seconds,
       project_id: project_id,
-      user_id: 1
+      user_id: user_id
     });
     const headers = {
-      'Content-Type': 'application/json',
-      Accept: 'application/json'
+      "Content-Type": "application/json",
+      Accept: "application/json"
     };
     fetch(timersAPI, {
-      method: 'POST',
+      method: "POST",
       headers: headers,
       body: body
     })
@@ -169,19 +184,24 @@ class App extends Component {
 
   projectsToDisplay = () => {
     return this.state.projects.filter(project =>
-      project.title.toLowerCase().includes(this.state.projectSearchTerm.toLowerCase())
+      project.title
+        .toLowerCase()
+        .includes(this.state.projectSearchTerm.toLowerCase())
     );
   };
 
   timersToDisplay = () => {
     return this.state.timers.filter(timer =>
-      timer.project.title.toLowerCase().includes(this.state.projectSearchTerm.toLowerCase())
+      timer.project.title
+        .toLowerCase()
+        .includes(this.state.projectSearchTerm.toLowerCase())
     );
   };
   render() {
     // state to props
     const timers = this.timersToDisplay();
     const projects = this.projectsToDisplay();
+    const users = this.state.users;
     const projectFormValues = this.state.projectFormValues;
     const timerFormValues = this.state.timerFormValues;
     const projectSearchTerm = this.state.projectSearchTerm;
@@ -208,6 +228,7 @@ class App extends Component {
               <TimerContainer
                 timers={timers}
                 projects={projects}
+                users={users}
                 timerFormValues={timerFormValues}
                 handleSubmitTimer={handleSubmitTimer}
                 handleChangeTimerForm={handleChangeTimerForm}
