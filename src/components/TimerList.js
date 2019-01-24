@@ -13,7 +13,7 @@ const TimerList = props => {
   const removeTimer = props.removeTimer;
   const handleDeleteTimer = props.handleDeleteTimer;
 
-  const durationSum = _.reduce(
+  const durationColumnTotal = _.reduce(
     timerSeconds,
     function(sum, n) {
       return sum + n;
@@ -53,14 +53,13 @@ const TimerList = props => {
               handleDeleteTimer={handleDeleteTimer}
             />
           ))}
+          <Table.Row>
+            <Table.Cell>Total Duration</Table.Cell>
+            <Table.Cell>{durationColumnTotal} seconds</Table.Cell>
+          </Table.Row>
         </Table.Body>
       </Table>
-      <Table celled inverted color="blue">
-        <Table.Row>
-          <Table.Cell>Total Duration</Table.Cell>
-          <Table.Cell>{durationSum} seconds</Table.Cell>
-        </Table.Row>
-      </Table>
+      <Table celled inverted color="blue" />
     </div>
   );
 };

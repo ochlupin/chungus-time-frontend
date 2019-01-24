@@ -11,7 +11,7 @@ const Project = props => {
   const timerSeconds = timers.map(timer => {
     return parseInt(timer.seconds);
   });
-  const secondsTotal = _.reduce(
+  const secondsSubtotal = _.reduce(
     timerSeconds,
     function(sum, n) {
       return sum + n;
@@ -24,7 +24,7 @@ const Project = props => {
       <Table.Cell>{title}</Table.Cell>
       <Table.Cell>{timers.length}</Table.Cell>
       <Table.Cell>{uniqueUsers.length}</Table.Cell>
-      <Table.Cell>{secondsTotal} seconds</Table.Cell>
+      <Table.Cell>{secondsSubtotal} seconds</Table.Cell>
       <Table.Cell>
         <Button onClick={() => handleDeleteProject(id)}>
           <Icon name="trash alternate outline" />

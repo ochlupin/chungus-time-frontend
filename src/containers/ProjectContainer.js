@@ -9,7 +9,7 @@ class ProjectContainer extends React.Component {
   render() {
     const projects = this.props.projects;
     const users = this.props.users;
-    const timers = this.props.timer;
+    const timers = this.props.timers;
     const timerFormValues = this.props.timerFormValues;
 
     const handleSubmitProject = this.props.handleSubmitProject;
@@ -35,6 +35,7 @@ class ProjectContainer extends React.Component {
         />
         <ProjectList
           projects={projects}
+          timers={timers}
           users={users}
           handleDeleteProject={handleDeleteProject}
         />
