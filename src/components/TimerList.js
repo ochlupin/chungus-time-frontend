@@ -3,6 +3,8 @@ import TimerDetail from "./TimerDetail";
 import ReactTable from "react-table";
 import { Icon, Label, Menu, Table } from "semantic-ui-react";
 import _ from "lodash";
+import Moment from "react-moment";
+import moment from "moment";
 // import { Tab } from "@material-ui/core";
 
 const TimerList = props => {
@@ -13,13 +15,18 @@ const TimerList = props => {
   const removeTimer = props.removeTimer;
   const handleDeleteTimer = props.handleDeleteTimer;
 
-  const durationColumnTotal = _.reduce(
-    timerSeconds,
-    function(sum, n) {
-      return sum + n;
-    },
-    0
+  const durationColumnTotal = moment.duration(
+    _.reduce(
+      timerSeconds,
+      function(sum, n) {
+        return sum + n;
+      },
+      0
+    ),
+    "seconds"
   );
+
+  const formattedDurationColumnTotal = durationColumnTotal.format("hh:mm:ss");
   return (
     <div>
       <h3>Active Timers</h3>
@@ -55,7 +62,7 @@ const TimerList = props => {
           ))}
           <Table.Row>
             <Table.Cell>Total Duration</Table.Cell>
-            <Table.Cell>{durationColumnTotal} seconds</Table.Cell>
+            <Table.Cell>{formattedDurationColumnTotal}</Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table>
