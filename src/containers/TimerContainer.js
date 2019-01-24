@@ -1,12 +1,12 @@
-import React from "react";
-import TimerForm from "../components/TimerForm";
-import TimerList from "../components/TimerList";
-import ActiveTimer from "../components/Timer/ActiveTimer";
-import ProjectFilter from "../components/ProjectFilter";
-import TimerFilter from "../components/TimerFilter";
-import { Icon, Label, Menu, Table } from "semantic-ui-react";
+import React from 'react';
+import TimerForm from '../components/TimerForm';
+import TimerList from '../components/TimerList';
+import ActiveTimer from '../components/Timer/ActiveTimer';
+import ProjectFilter from '../components/ProjectFilter';
+import TimerFilter from '../components/TimerFilter';
+import { Icon, Label, Menu, Table } from 'semantic-ui-react';
 
-const timersAPI = "http://localhost:5000/api/v1/timers";
+const timersAPI = 'http://localhost:5000/api/v1/timers';
 
 class TimerContainer extends React.Component {
   render() {
@@ -14,7 +14,7 @@ class TimerContainer extends React.Component {
     const projects = this.props.projects;
     const users = this.props.users;
     const handleSubmitTimer = this.props.handleSubmitTimer;
-    const handleChangeTimerForm = this.props.handleChangeTimerForm;
+    // const handleChangeTimerForm = this.props.handleChangeTimerForm;
     const handleDeleteTimer = this.props.handleDeleteTimer;
     const removeTimer = this.props.removeTimer;
     const timerFormValues = this.props.timerFormValues;
@@ -31,7 +31,6 @@ class TimerContainer extends React.Component {
         <br />
         <TimerForm
           handleSubmitTimer={handleSubmitTimer}
-          handleChangeTimerForm={handleChangeTimerForm}
           timerFormValues={timerFormValues}
           projects={projects}
           timers={timers}
