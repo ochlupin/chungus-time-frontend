@@ -5,6 +5,18 @@ import ReactTable from "react-table";
 import _ from "lodash";
 import Moment from "react-moment";
 import moment from "moment";
+import {
+  LineChart,
+  Line,
+  PieChart,
+  Pie,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend
+} from "recharts";
 
 const ProjectList = props => {
   const projects = props.projects;
@@ -28,12 +40,6 @@ const ProjectList = props => {
   );
 
   const formattedDurationColumnTotal = durationColumnTotal.format("hh:mm:ss");
-
-  const columns = [
-    { Header: "Project", accessor: "title" },
-    { Header: "No. of Timers", accessor: "timers.length" },
-    { Header: "No. of Users", accessor: "uniqueUsers.length" }
-  ];
 
   return (
     <div>
@@ -74,9 +80,27 @@ const ProjectList = props => {
           <Table.Cell> </Table.Cell>
         </Table.Row>
       </Table>
-      <ReactTable data={projects} columns={columns} />
+      <BarChart width={800} height={600} data={projects}>
+        <Tooltip />
+        <Legend />
+        <XAxis dataKey="title" />
+        <YAxis />
+        <Bar
+          name="Timer Count"
+          type="monotone"
+          dataKey="timers.length"
+          barSize={30}
+          fill="#1F85D0"
+        />
+      </BarChart>
     </div>
   );
 };
 
 export default ProjectList;
+
+// const columns = [
+//   { Header: "Project", accessor: "title" },
+//   { Header: "No. of Timers", accessor: "timers.length" },
+//   { Header: "No. of Users", accessor: "uniqueUsers.length" }
+// ];

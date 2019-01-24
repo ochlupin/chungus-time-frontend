@@ -48,7 +48,8 @@ class App extends Component {
     users: [],
     timerFormValues: initialTimerFormValues,
     projectFormValues: initialProjectFormValues,
-    projectSearchTerm: ""
+    projectSearchTerm: "",
+    timerSearchTerm: ""
   };
 
   async componentDidMount() {
@@ -183,6 +184,11 @@ class App extends Component {
     const projectSearchTerm = value;
     this.setState({ projectSearchTerm: projectSearchTerm });
   };
+  updateTimerSearchTerm = (event, { name, value }) => {
+    console.log(name, value);
+    const timerSearchTerm = value;
+    this.setState({ timerSearchTerm: timerSearchTerm });
+  };
 
   projectsToDisplay = () => {
     return this.state.projects.filter(project =>
@@ -207,6 +213,7 @@ class App extends Component {
     const projectFormValues = this.state.projectFormValues;
     const timerFormValues = this.state.timerFormValues;
     const projectSearchTerm = this.state.projectSearchTerm;
+    const timerSearchTerm = this.state.timerSearchTerm;
     // callbacks as props
     const handleSubmitProject = this.handleSubmitProject;
     const handleSubmitTimer = this.handleSubmitTimer;
@@ -215,6 +222,7 @@ class App extends Component {
     const handleDeleteTimer = this.handleDeleteTimer;
     const handleDeleteProject = this.handleDeleteProject;
     const updateProjectSearchTerm = this.updateProjectSearchTerm;
+    const updateTimerSearchTerm = this.updateTimerSearchTerm;
 
     return (
       <div className="App">
@@ -237,6 +245,8 @@ class App extends Component {
                 handleDeleteTimer={handleDeleteTimer}
                 projectSearchTerm={projectSearchTerm}
                 updateProjectSearchTerm={updateProjectSearchTerm}
+                updateTimerSearchTerm={updateTimerSearchTerm}
+                timerSearchTerm={timerSearchTerm}
               />
             );
           }}
@@ -266,3 +276,16 @@ class App extends Component {
 }
 
 export default App;
+
+// timersToDisplay = () => {
+//   return this.state.timers.filter(timer => {
+//     return (
+//       timer.project.title
+//         .toLowerCase()
+//         .includes(this.state.projectSearchTerm.toLowerCase()) ||
+//       timer.title
+//         .toLowerCase()
+//         .includes(this.state.timerSearchTerm.toLowerCase())
+//     );
+//   });
+// };

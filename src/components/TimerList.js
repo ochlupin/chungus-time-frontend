@@ -63,6 +63,9 @@ const TimerList = props => {
           <Table.Row>
             <Table.Cell>Total Duration</Table.Cell>
             <Table.Cell>{formattedDurationColumnTotal}</Table.Cell>
+            <Table.Cell />
+            <Table.Cell />
+            <Table.Cell />
           </Table.Row>
         </Table.Body>
       </Table>

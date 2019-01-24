@@ -3,6 +3,7 @@ import TimerForm from "../components/TimerForm";
 import TimerList from "../components/TimerList";
 import ActiveTimer from "../components/Timer/ActiveTimer";
 import ProjectFilter from "../components/ProjectFilter";
+import TimerFilter from "../components/TimerFilter";
 import { Icon, Label, Menu, Table } from "semantic-ui-react";
 
 const timersAPI = "http://localhost:5000/api/v1/timers";
@@ -18,7 +19,9 @@ class TimerContainer extends React.Component {
     const removeTimer = this.props.removeTimer;
     const timerFormValues = this.props.timerFormValues;
     const updateProjectSearchTerm = this.props.updateProjectSearchTerm;
+    const updateTimerSearchTerm = this.props.updateTimerSearchTerm;
     const projectSearchTerm = this.props.projectSearchTerm;
+    const timerSearchTerm = this.props.timerSearchTerm;
 
     return (
       <div>
@@ -42,6 +45,10 @@ class TimerContainer extends React.Component {
           projects={projects}
           users={users}
           timers={timers}
+        />
+        <TimerFilter
+          updateTimerSearchTerm={updateTimerSearchTerm}
+          timerSearchTerm={timerSearchTerm}
         />
         <TimerList
           timers={timers}
