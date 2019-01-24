@@ -1,22 +1,11 @@
 import React from "react";
 import Project from "./Project";
-import { Icon, Label, Menu, Table, Grid } from "semantic-ui-react";
-import ReactTable from "react-table";
+import { Icon, Table } from "semantic-ui-react";
+
 import _ from "lodash";
-import Moment from "react-moment";
+
 import moment from "moment";
-import {
-  LineChart,
-  Line,
-  PieChart,
-  Pie,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend
-} from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from "recharts";
 
 const ProjectList = props => {
   const projects = props.projects;
@@ -44,6 +33,19 @@ const ProjectList = props => {
   return (
     <div>
       <h3>Active Projects</h3>
+      <BarChart width={800} height={600} data={projects}>
+        <Tooltip />
+        <Legend />
+        <XAxis dataKey="title" />
+        <YAxis />
+        <Bar
+          name="Timer Count"
+          type="monotone"
+          dataKey="timers.length"
+          barSize={30}
+          fill="#1F85D0"
+        />
+      </BarChart>
       <Table sortable celled color="blue">
         <Table.Header>
           <Table.Row>
@@ -80,19 +82,6 @@ const ProjectList = props => {
           <Table.Cell> </Table.Cell>
         </Table.Row>
       </Table>
-      <BarChart width={800} height={600} data={projects}>
-        <Tooltip />
-        <Legend />
-        <XAxis dataKey="title" />
-        <YAxis />
-        <Bar
-          name="Timer Count"
-          type="monotone"
-          dataKey="timers.length"
-          barSize={30}
-          fill="#1F85D0"
-        />
-      </BarChart>
     </div>
   );
 };
