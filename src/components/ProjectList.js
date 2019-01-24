@@ -1,15 +1,17 @@
-import React from 'react';
-import Project from './Project';
-import { Icon, Label, Menu, Table, Grid } from 'semantic-ui-react';
-import ReactTable from 'react-table';
+import React from "react";
+import Project from "./Project";
+import { Icon, Label, Menu, Table, Grid } from "semantic-ui-react";
+import ReactTable from "react-table";
+import _ from "lodash";
 
 const ProjectList = props => {
   const projects = props.projects;
   const handleDeleteProject = props.handleDeleteProject;
   const timers = props.projects.timers;
   const columns = [
-    { Header: 'Project', accessor: 'title' },
-    { Header: 'No. of Timers', accessor: 'timers.length' }
+    { Header: "Project", accessor: "title" },
+    { Header: "No. of Timers", accessor: "timers.length" },
+    { Header: "No. of Users", accessor: "users.length" }
   ];
 
   return (
@@ -22,6 +24,7 @@ const ProjectList = props => {
               Project <Icon name="sitemap" />
             </Table.HeaderCell>
             <Table.HeaderCell>No. of Timers</Table.HeaderCell>
+            <Table.HeaderCell>No. of Users</Table.HeaderCell>
             <Table.HeaderCell>
               Total Duration <Icon name="time" />
             </Table.HeaderCell>
@@ -31,7 +34,11 @@ const ProjectList = props => {
           </Table.Row>
         </Table.Header>
         {projects.map(project => (
-          <Project key={project.id} project={project} handleDeleteProject={handleDeleteProject} />
+          <Project
+            key={project.id}
+            project={project}
+            handleDeleteProject={handleDeleteProject}
+          />
         ))}
       </Table>
       <Table color="blue" inverted celled>

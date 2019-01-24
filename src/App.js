@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import _ from "lodash";
 
 import "./App.css";
 import {
@@ -245,6 +246,8 @@ class App extends Component {
             return (
               <ProjectContainer
                 projects={projects}
+                users={users}
+                timers={timers}
                 projectFormValues={projectFormValues}
                 handleSubmitProject={handleSubmitProject}
                 handleChangeProjectForm={handleChangeProjectForm}

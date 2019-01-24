@@ -1,13 +1,15 @@
-import React from 'react';
-import ProjectForm from '../components/ProjectForm';
-import ProjectList from '../components/ProjectList';
-import ProjectFilter from '../components/ProjectFilter';
+import React from "react";
+import ProjectForm from "../components/ProjectForm";
+import ProjectList from "../components/ProjectList";
+import ProjectFilter from "../components/ProjectFilter";
 
-const projectsAPI = 'http://localhost:5000/api/v1/projects';
+const projectsAPI = "http://localhost:5000/api/v1/projects";
 
 class ProjectContainer extends React.Component {
   render() {
     const projects = this.props.projects;
+    const users = this.props.users;
+    const timers = this.props.timer;
     const handleSubmitProject = this.props.handleSubmitProject;
     const handleChangeProjectForm = this.props.handleChangeProjectForm;
     const handleDeleteProject = this.props.handleDeleteProject;
@@ -28,7 +30,11 @@ class ProjectContainer extends React.Component {
           updateProjectSearchTerm={updateProjectSearchTerm}
           projectSearchTerm={projectSearchTerm}
         />
-        <ProjectList projects={projects} handleDeleteProject={handleDeleteProject} />
+        <ProjectList
+          projects={projects}
+          users={users}
+          handleDeleteProject={handleDeleteProject}
+        />
       </div>
     );
   }
