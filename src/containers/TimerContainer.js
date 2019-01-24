@@ -46,10 +46,6 @@ class TimerContainer extends React.Component {
           users={users}
           timers={timers}
         />
-        <TimerFilter
-          updateTimerSearchTerm={updateTimerSearchTerm}
-          timerSearchTerm={timerSearchTerm}
-        />
         <TimerList
           timers={timers}
           removeTimer={removeTimer}
