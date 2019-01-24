@@ -5,6 +5,18 @@ import { Icon, Label, Menu, Table } from "semantic-ui-react";
 import _ from "lodash";
 import Moment from "react-moment";
 import moment from "moment";
+import {
+  LineChart,
+  Line,
+  PieChart,
+  Pie,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend
+} from "recharts";
 // import { Tab } from "@material-ui/core";
 
 const TimerList = props => {
@@ -70,6 +82,19 @@ const TimerList = props => {
         </Table.Body>
       </Table>
       <Table celled inverted color="blue" />
+      <BarChart width={1200} height={1000} data={timers}>
+        <Tooltip />
+        <Legend />
+        <XAxis dataKey="title" />
+        <YAxis />
+        <Bar
+          name="Duration (secs)"
+          type="monotone"
+          dataKey="seconds"
+          barSize={30}
+          fill="#1F85D0"
+        />
+      </BarChart>
     </div>
   );
 };
