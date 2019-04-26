@@ -1,6 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# React PMA (Project Management App)
+
+## Description
+
+- React PMA is a simple task manager and time tracker application that let's users quickly add tasks and assign them to different projects as well as input the duration/time they spent on a certain tasks
+- React PMA also has a visualization aspect that let's the users see in a chart how much time they have spent on a certain project or individual tasks
+- 
+
+
+## Tech Stack
+
+### Backend
+
+- Ruby on Rails
+
+### Frontend
+
+- React.js
+
+### External Libraries
+
+- Semantic React
+- Moment.js
+- 
+
+## Available Scripts5
 
 In the project directory, you can run:
 
