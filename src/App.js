@@ -252,16 +252,3 @@ class App extends Component {
 }
 
 export default App;
-
-// timersToDisplay = () => {
-//   return this.state.timers.filter(timer => {
-//     return (
-//       timer.project.title
-//         .toLowerCase()
-//         .includes(this.state.projectSearchTerm.toLowerCase()) ||
-//       timer.title
-//         .toLowerCase()
-//         .includes(this.state.timerSearchTerm.toLowerCase())
-//     );
-//   });
-// };
